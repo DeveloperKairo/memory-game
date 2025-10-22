@@ -6,6 +6,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #fc1e8a;
+  user-select: none;
 }
 
 main {
@@ -66,4 +67,54 @@ h2 {
   align-items: center;
   justify-content: center;
   background-color: #fff;
+  font-size: 3em;
+  transform: rotateY(180deg);
+  transition: 0.25s;
+}
+
+.item::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #404040;
+  transition: 0.25s;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.item.boxOpen{
+  transform: rotateY(0deg);
+}
+
+.boxOpen::after, .boxMatch::after{
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 900px) {
+  .game {
+    width: 90vw;
+    height: 90vw;
+    gap: 6px;
+  }
+  .item {
+    font-size: 2em;
+    width: 20vw;
+    height: 20vw;
+  }
+  main {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .game {
+    width: 100vw;
+    height: 100vw;
+    gap: 4px;
+  }
+  .item {
+    font-size: 1.2em;
+    width: 22vw;
+    height: 22vw;
+  }
 }
